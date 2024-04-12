@@ -1,3 +1,17 @@
+:root {
+    --text-color: #333;
+    --line-color: rgba(0, 0, 0, 0.5);
+    --background-color: white;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-color: white;
+        --line-color: rgba(255, 255, 255, 0.5);
+        --background-color: #333;
+    }
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,18 +19,35 @@
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
+html {
+    scroll-snap-type: y mandatory;
+}
+
 body {
-    font-family: 'Helvetica Neue', Arial, sans-serif;
-    color: #333;
-    background-color: #fff;
+    color: var(--text-color);
+    background-color: var(--background-color);
     line-height: 1.6;
-    padding: 20px;
+    padding: 0;
+}
+
+.fullscreen {
+    display: grid;
+    place-content: center;
+    height: 100vh;
+    width: 100%;
+    text-align: center;
+    font-size: 4em;
+    scroll-snap-align: start;
 }
 
 main {
-    max-width: 800px;
+    display: grid;
+    place-content: center;
+    min-height: 100vh;
+    scroll-snap-align: start;
+    max-width: 70ch;
     margin: 0 auto;
-    padding: 20px;
+    padding: 1rem;
 }
 
 header {
@@ -26,12 +57,14 @@ header {
 
 header h1 {
     font-size: 2.5em;
-    color: #333;
+    color: var(--text-color);
+    line-height: 2ex;
+    margin-bottom: 0.5rem;
 }
 
 header p {
     font-size: 1.2em;
-    color: #333;
+    color: var(--text-color);
 }
 
 section h3 {
@@ -47,33 +80,14 @@ section p {
 hr {
     border: none;
     height: 1px;
-    background-color: #333;
+    background-color: var(--line-color);
     margin-top: 30px;
-    width: 60%;
+    margin-bottom: 30px;
     margin-left: auto;
     margin-right: auto;
+    width: 100%;
 }
 
-footer {
-    text-align: center;
-    font-size: 0.8em;
-    color: #666;
-}
-
-@media (max-width: 768px) {
-    body {
-        padding: 10px;
-    }
-
-    main {
-        padding: 10px;
-    }
-
-    header h1 {
-        font-size: 2em;
-    }
-
-    header p, footer {
-        font-size: 0.9em;
-    }
+.copy {
+    font-size: 0.8rem;
 }
